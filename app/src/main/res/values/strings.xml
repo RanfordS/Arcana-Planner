@@ -1,0 +1,5 @@
+<resources>
+	<string name="app_name">Arcana Planner</string>
+	<string name="hello_world">Hello World!</string>
+	<string name="time_sample">13:37</string>
+</resources>

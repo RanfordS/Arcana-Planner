@@ -33,16 +33,6 @@
 		app:layout_constraintStart_toEndOf="@+id/agenda_event_summary_icon"
 		app:layout_constraintTop_toTopOf="parent"/>
 	
-	<ProgressBar
-		android:id="@+id/agenda_event_summary_progressBar2"
-		style="?android:attr/progressBarStyleHorizontal"
-		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		app:layout_constraintEnd_toEndOf="@+id/agenda_event_summary_progress"
-		app:layout_constraintHorizontal_bias="0.5"
-		app:layout_constraintStart_toStartOf="@+id/agenda_event_summary_progress"
-		app:layout_constraintTop_toBottomOf="@+id/agenda_event_summary_progress"/>
-	
 	<androidx.constraintlayout.widget.Guideline
 		android:id="@+id/agenda_event_summary_guideline"
 		android:layout_width="wrap_content"
@@ -74,8 +64,9 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent"/>
 		
-		<ImageView
-			android:id="@+id/agenda_event_summary_progress"
+		<fragment
+			android:id="@+id/agenda_event_summary_completion_bar"
+			android:name="uk.co.rskyl.arcanaplanner.completionbar.FragmentCompletionBar"
 			android:layout_width="0dp"
 			android:layout_height="4dp"
 			android:layout_marginStart="8dp"
@@ -83,8 +74,7 @@
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toStartOf="@+id/agenda_event_summary_endTime"
 			app:layout_constraintStart_toEndOf="@+id/agenda_event_summary_startTime"
-			app:layout_constraintTop_toTopOf="parent"
-			app:srcCompat="@drawable/bar_completion"/>
+			app:layout_constraintTop_toTopOf="parent"/>
 		
 		<TextView
 			android:id="@+id/agenda_event_summary_endTime"

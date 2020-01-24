@@ -49,7 +49,7 @@ public class FragmentCompletionBar extends Fragment
 				constraints.connect (R.id.completion_bar_space, ConstraintSet.TOP,    ConstraintSet.PARENT_ID, ConstraintSet.TOP,    0);
 				constraints.connect (R.id.completion_bar_space, ConstraintSet.BOTTOM, ConstraintSet.PARENT_ID, ConstraintSet.BOTTOM, 0);
 				//*/
-				constraints.setHorizontalBias (R.id.completion_bar_space, 0.75f);
+				constraints.setHorizontalBias (R.id.completion_bar_space, progress);
 				/*/
 				constraints.connect (R.id.completion_bar_progress, ConstraintSet.START,  ConstraintSet.PARENT_ID,   ConstraintSet.START, dp1);
 				constraints.connect (R.id.completion_bar_progress, ConstraintSet.END,    R.id.completion_bar_space, ConstraintSet.START, dp1);

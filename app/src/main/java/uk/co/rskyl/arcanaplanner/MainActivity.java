@@ -1,7 +1,9 @@
 package uk.co.rskyl.arcanaplanner;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import java.util.Calendar;
 
@@ -13,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import uk.co.rskyl.arcanaplanner.agenda.AgendaEvent;
 import uk.co.rskyl.arcanaplanner.agendaeventsummary.AESAdapter;
+import uk.co.rskyl.arcanaplanner.completionbar.ViewCompletionBar;
 
 public
 class MainActivity extends AppCompatActivity
@@ -37,25 +40,27 @@ class MainActivity extends AppCompatActivity
 				new AgendaEvent (c0, c1),
 				new AgendaEvent (c2, c3)
 			};
-		Log.i ("--[R]", data[0].startTimeString);
-		Log.i ("--[R]", data[0].endTimeString);
-		Log.i ("--[R]", data[1].startTimeString);
-		Log.i ("--[R]", data[1].endTimeString);
 		
 		RecyclerView recyclerView = findViewById (R.id.recyclerview);
 		RecyclerView.LayoutManager layoutManager = new LinearLayoutManager (this);
 		recyclerView.setLayoutManager (layoutManager);
 		recyclerView.setHasFixedSize (true);
 		
-		
-		Log.i ("--[R]", "!make");
 		RecyclerView.Adapter adapter = new AESAdapter (data);
-		Log.i ("--[R]", "!set");
 		recyclerView.setAdapter (adapter);
-		Log.i ("--[R]", "!done");
 		
 		recyclerView.addItemDecoration (new DividerItemDecoration (this, DividerItemDecoration.VERTICAL));
 		
+		final ViewCompletionBar viewCompletionBar = findViewById (R.id.ViewCompletionBar);
+		//viewCompletionBar.setProgress (0.7f);
+		
+		findViewById (R.id.button).setOnClickListener (new View.OnClickListener ()
+		{
+			@Override public void onClick (View view)
+			{
+				viewCompletionBar.setProgress ((float) Math.random ());
+			}
+		});
 		
 		/*
 		ProgressBar inbuiltProgess = findViewById (R.id.agenda_event_summary_progressBar2);

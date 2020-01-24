@@ -17,7 +17,7 @@
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
-		app:srcCompat="@mipmap/ic_launcher_round"
+		app:srcCompat="@drawable/ic_arcanaplannerlogo"
 		tools:layout_constraintDimensionRatio="1:1"/>
 	
 	<TextView
@@ -64,9 +64,9 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent"/>
 		
-		<fragment
+		<include
 			android:id="@+id/agenda_event_summary_completion_bar"
-			android:name="uk.co.rskyl.arcanaplanner.completionbar.FragmentCompletionBar"
+			layout="@layout/fragment_completion_bar"
 			android:layout_width="0dp"
 			android:layout_height="4dp"
 			android:layout_marginStart="8dp"

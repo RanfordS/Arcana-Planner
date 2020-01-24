@@ -6,6 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -49,6 +50,11 @@ public class ViewCompletionBar extends View
 		requestLayout ();
 	}
 	
+	public Float getProgress ()
+	{
+		return progress;
+	}
+	
 	private void init ()
 	{
 		backgroundPaint = new Paint (Paint.ANTI_ALIAS_FLAG);
@@ -57,7 +63,17 @@ public class ViewCompletionBar extends View
 		foregroundPaint = new Paint (Paint.ANTI_ALIAS_FLAG);
 		foregroundPaint.setColor (foregroundColor);
 	}
-	
+	/*/
+	@Override
+	protected void onMeasure (int widthMeasureSpec, int heightMeasureSpec)
+	{
+		int minw = (int) (3*dp + 0.5f);
+		int minh = (int) (3*dp + 0.5f);
+		int w = resolveSizeAndState (minw, widthMeasureSpec, 1);
+		int h = resolveSizeAndState (minh, heightMeasureSpec, 1);
+		setMeasuredDimension (w, h);
+	}
+	//*/
 	@Override
 	protected void onDraw (Canvas canvas)
 	{
@@ -66,8 +82,8 @@ public class ViewCompletionBar extends View
 		float h = getHeight ();
 		float b = 1*dp;
 		float z = 0;
-		float p = b + (w-2*b)*progress;
-		canvas.drawRoundRect (z, z, w, h, h/2,h/2, backgroundPaint);
-		canvas.drawRoundRect (b, b, p, h-b, h/2-b,h/2-b, foregroundPaint);
+		float p = b + (w - 2*b)*progress;
+		canvas.drawRoundRect (z, z, w, h, h/2, h/2, backgroundPaint);
+		canvas.drawRoundRect (b, b, p, h - b, h/2 - b, h/2 - b, foregroundPaint);
 	}
 }

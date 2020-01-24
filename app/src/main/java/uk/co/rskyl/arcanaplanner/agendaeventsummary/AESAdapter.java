@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import uk.co.rskyl.arcanaplanner.R;
 import uk.co.rskyl.arcanaplanner.agenda.AgendaEvent;
+import uk.co.rskyl.arcanaplanner.completionbar.ViewCompletionBar;
 
 public class AESAdapter extends RecyclerView.Adapter<AESAdapter.AESViewHolder>
 {
@@ -21,7 +22,7 @@ public class AESAdapter extends RecyclerView.Adapter<AESAdapter.AESViewHolder>
 	{
 		public TextView startTimeTextView;
 		public TextView endTimeTextView;
-		public View completionBarFragment;
+		public ViewCompletionBar completionBar;
 		//public AgendaEvent event;
 		
 		public AESViewHolder (ConstraintLayout view)
@@ -29,7 +30,7 @@ public class AESAdapter extends RecyclerView.Adapter<AESAdapter.AESViewHolder>
 			super (view);
 			startTimeTextView = view.findViewById (R.id.agenda_event_summary_startTime);
 			endTimeTextView = view.findViewById (R.id.agenda_event_summary_endTime);
-			//completionBarFragment = view.findViewById (R.id.agenda_event_summary_completion_bar);
+			completionBar = view.findViewById (R.id.agenda_event_summary_completion);
 			
 			//Calendar tmp0 = Calendar.getInstance ();
 			//Calendar tmp1 = Calendar.getInstance ();

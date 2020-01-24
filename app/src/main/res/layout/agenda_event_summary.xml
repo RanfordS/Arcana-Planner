@@ -9,12 +9,15 @@
 	
 	<ImageView
 		android:id="@+id/agenda_event_summary_icon"
-		android:layout_width="40dp"
+		android:layout_width="0dp"
 		android:layout_height="0dp"
-		android:layout_marginStart="16dp"
-		android:layout_marginTop="16dp"
-		android:layout_marginBottom="16dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
+		android:layout_marginBottom="8dp"
+		android:tint="#CDDC39"
+		android:tintMode="multiply"
 		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintDimensionRatio="1"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
 		app:srcCompat="@drawable/ic_arcanaplannerlogo"
@@ -24,8 +27,8 @@
 		android:id="@+id/agenda_event_summary_title"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginStart="16dp"
-		android:layout_marginTop="16dp"
+		android:layout_marginStart="8dp"
+		android:layout_marginTop="8dp"
 		android:fontFamily="sans-serif"
 		android:text="@string/hello_world"
 		android:textStyle="bold"
@@ -45,10 +48,10 @@
 	
 	<androidx.constraintlayout.widget.ConstraintLayout
 		android:layout_width="0dp"
-		android:layout_height="19dp"
-		android:layout_marginStart="16dp"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="8dp"
 		android:layout_marginEnd="16dp"
-		android:layout_marginBottom="16dp"
+		android:layout_marginBottom="8dp"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toEndOf="@+id/agenda_event_summary_icon"
@@ -64,18 +67,6 @@
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent"/>
 		
-		<include
-			android:id="@+id/agenda_event_summary_completion_bar"
-			layout="@layout/fragment_completion_bar"
-			android:layout_width="0dp"
-			android:layout_height="4dp"
-			android:layout_marginStart="8dp"
-			android:layout_marginEnd="8dp"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toStartOf="@+id/agenda_event_summary_endTime"
-			app:layout_constraintStart_toEndOf="@+id/agenda_event_summary_startTime"
-			app:layout_constraintTop_toTopOf="parent"/>
-		
 		<TextView
 			android:id="@+id/agenda_event_summary_endTime"
 			android:layout_width="wrap_content"
@@ -84,7 +75,17 @@
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintTop_toTopOf="parent"/>
-	
+		
+		<uk.co.rskyl.arcanaplanner.completionbar.ViewCompletionBar
+			android:id="@+id/agenda_event_summary_completion"
+			android:layout_width="0dp"
+			android:layout_height="3dp"
+			android:layout_marginStart="8dp"
+			android:layout_marginEnd="8dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toStartOf="@+id/agenda_event_summary_endTime"
+			app:layout_constraintStart_toEndOf="@+id/agenda_event_summary_startTime"
+			app:layout_constraintTop_toTopOf="parent"/>
 	</androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

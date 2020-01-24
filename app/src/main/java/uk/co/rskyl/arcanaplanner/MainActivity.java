@@ -7,6 +7,7 @@ import android.view.View;
 
 import java.util.Calendar;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -52,7 +53,6 @@ class MainActivity extends AppCompatActivity
 		recyclerView.addItemDecoration (new DividerItemDecoration (this, DividerItemDecoration.VERTICAL));
 		
 		final ViewCompletionBar viewCompletionBar = findViewById (R.id.ViewCompletionBar);
-		//viewCompletionBar.setProgress (0.7f);
 		
 		findViewById (R.id.button).setOnClickListener (new View.OnClickListener ()
 		{
@@ -62,13 +62,16 @@ class MainActivity extends AppCompatActivity
 			}
 		});
 		
-		/*
-		ProgressBar inbuiltProgess = findViewById (R.id.agenda_event_summary_progressBar2);
-		//inbuiltProgess.setMin (0);
-		inbuiltProgess.setMax (10);
-		inbuiltProgess.setProgress (7);
-		//ConstraintLayout constraintLayout = findViewById (R.id.agenda_event_summary_layout);
-		TextView endTimeTextView = findViewById (R.id.agenda_event_summary_endTime);
-		 */
+		if (savedInstanceState != null)
+		{
+			viewCompletionBar.setProgress (savedInstanceState.getFloat ("progress"));
+		}
+	}
+	
+	@Override protected void onSaveInstanceState (@NonNull Bundle outState)
+	{
+		super.onSaveInstanceState (outState);
+		ViewCompletionBar viewCompletionBar = findViewById (R.id.ViewCompletionBar);
+		outState.putFloat ("progress", viewCompletionBar.getProgress ());
 	}
 }

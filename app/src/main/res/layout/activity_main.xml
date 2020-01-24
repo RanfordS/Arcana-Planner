@@ -8,25 +8,13 @@
 	android:layout_height="match_parent">
 	
 	<fragment
-		android:id="@+id/fragment"
+		android:id="@+id/activity_main_datebar"
 		android:name="uk.co.rskyl.arcanaplanner.datebar.FragmentDateBar"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"/>
-	
-	<fragment
-		android:id="@+id/fragment2"
-		android:name="uk.co.rskyl.arcanaplanner.completionbar.FragmentCompletionBar"
-		android:layout_width="0dp"
-		android:layout_height="4dp"
-		android:layout_marginStart="16dp"
-		android:layout_marginTop="16dp"
-		android:layout_marginEnd="16dp"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/fragment"/>
 	
 	<include
 		android:id="@+id/include2"
@@ -48,7 +36,7 @@
 		android:layout_marginEnd="16dp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/fragment2"/>
+		app:layout_constraintTop_toBottomOf="@+id/activity_main_datebar"/>
 	
 	<uk.co.rskyl.arcanaplanner.completionbar.ViewCompletionBar
 		android:id="@+id/ViewCompletionBar"

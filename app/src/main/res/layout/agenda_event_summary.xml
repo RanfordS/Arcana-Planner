@@ -7,21 +7,59 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content">
 	
-	<ImageView
+	<uk.co.rskyl.arcanaplanner.agenda.ViewEventCircle
 		android:id="@+id/agenda_event_summary_icon"
 		android:layout_width="0dp"
 		android:layout_height="0dp"
 		android:layout_marginStart="8dp"
 		android:layout_marginTop="8dp"
 		android:layout_marginBottom="8dp"
-		android:tint="#CDDC39"
-		android:tintMode="multiply"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintDimensionRatio="1"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
-		app:srcCompat="@drawable/ic_arcanaplannerlogo"
-		tools:layout_constraintDimensionRatio="1:1"/>
+		tools:layout_constraintDimensionRatio="1"/>
+	
+	<uk.co.rskyl.arcanaplanner.completionbar.ViewCompletionBar
+		android:id="@+id/agenda_event_summary_completion"
+		android:layout_width="0dp"
+		android:layout_height="3dp"
+		android:layout_marginStart="4dp"
+		android:layout_marginEnd="4dp"
+		app:layout_constraintBottom_toBottomOf="@+id/agenda_event_summary_startTime"
+		app:layout_constraintEnd_toStartOf="@+id/agenda_event_summary_endTime"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toEndOf="@+id/agenda_event_summary_startTime"
+		app:layout_constraintTop_toTopOf="@+id/agenda_event_summary_startTime"
+		app:layout_constraintVertical_bias="0.6"
+		tools:progress="0"/>
+	
+	<TextView
+		android:id="@+id/agenda_event_summary_endTime"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginEnd="8dp"
+		android:text="@string/time_sample"
+		android:textColor="@color/colorNearBlack"
+		app:layout_constraintBottom_toBottomOf="@+id/agenda_event_summary_startTime"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="1.0"
+		app:layout_constraintStart_toEndOf="@+id/agenda_event_summary_startTime"
+		app:layout_constraintTop_toTopOf="@+id/agenda_event_summary_startTime"/>
+	
+	<TextView
+		android:id="@+id/agenda_event_summary_startTime"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="1dp"
+		android:layout_marginBottom="8dp"
+		android:fontFamily="sans-serif"
+		android:text="@string/time_sample"
+		android:textColor="@color/colorNearBlack"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="@+id/agenda_event_summary_title"
+		app:layout_constraintTop_toBottomOf="@+id/agenda_event_summary_divider"/>
 	
 	<TextView
 		android:id="@+id/agenda_event_summary_title"
@@ -29,63 +67,23 @@
 		android:layout_height="wrap_content"
 		android:layout_marginStart="8dp"
 		android:layout_marginTop="8dp"
+		android:layout_marginBottom="1dp"
 		android:fontFamily="sans-serif"
 		android:text="@string/hello_world"
+		android:textColor="@color/colorNearBlack"
 		android:textStyle="bold"
-		app:layout_constraintBottom_toTopOf="@+id/agenda_event_summary_guideline"
+		app:layout_constraintBottom_toTopOf="@+id/agenda_event_summary_divider"
 		app:layout_constraintStart_toEndOf="@+id/agenda_event_summary_icon"
 		app:layout_constraintTop_toTopOf="parent"/>
 	
-	<androidx.constraintlayout.widget.Guideline
-		android:id="@+id/agenda_event_summary_guideline"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:orientation="horizontal"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintGuide_percent="0.5"
-		app:layout_constraintTop_toTopOf="parent"
-		/>
-	
-	<androidx.constraintlayout.widget.ConstraintLayout
+	<View
+		android:id="@+id/agenda_event_summary_divider"
 		android:layout_width="0dp"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="8dp"
-		android:layout_marginEnd="16dp"
-		android:layout_marginBottom="8dp"
+		android:layout_height="1dp"
+		android:background="?android:attr/listDivider"
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toEndOf="@+id/agenda_event_summary_icon"
-		app:layout_constraintTop_toTopOf="@+id/agenda_event_summary_guideline">
-		
-		<TextView
-			android:id="@+id/agenda_event_summary_startTime"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:fontFamily="sans-serif"
-			android:text="@string/time_sample"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent"/>
-		
-		<TextView
-			android:id="@+id/agenda_event_summary_endTime"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="@string/time_sample"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toEndOf="parent"
-			app:layout_constraintTop_toTopOf="parent"/>
-		
-		<uk.co.rskyl.arcanaplanner.completionbar.ViewCompletionBar
-			android:id="@+id/agenda_event_summary_completion"
-			android:layout_width="0dp"
-			android:layout_height="3dp"
-			android:layout_marginStart="8dp"
-			android:layout_marginEnd="8dp"
-			app:layout_constraintBottom_toBottomOf="parent"
-			app:layout_constraintEnd_toStartOf="@+id/agenda_event_summary_endTime"
-			app:layout_constraintStart_toEndOf="@+id/agenda_event_summary_startTime"
-			app:layout_constraintTop_toTopOf="parent"/>
-	</androidx.constraintlayout.widget.ConstraintLayout>
+		app:layout_constraintEnd_toEndOf="@+id/agenda_event_summary_title"
+		app:layout_constraintStart_toStartOf="@+id/agenda_event_summary_title"
+		app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

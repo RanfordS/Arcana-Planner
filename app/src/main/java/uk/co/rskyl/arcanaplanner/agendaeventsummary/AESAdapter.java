@@ -1,18 +1,15 @@
 package uk.co.rskyl.arcanaplanner.agendaeventsummary;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.Calendar;
-
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import uk.co.rskyl.arcanaplanner.R;
 import uk.co.rskyl.arcanaplanner.agenda.AgendaEvent;
+import uk.co.rskyl.arcanaplanner.agenda.ViewEventCircle;
 import uk.co.rskyl.arcanaplanner.completionbar.ViewCompletionBar;
 
 public class AESAdapter extends RecyclerView.Adapter<AESAdapter.AESViewHolder>
@@ -23,6 +20,7 @@ public class AESAdapter extends RecyclerView.Adapter<AESAdapter.AESViewHolder>
 		public TextView startTimeTextView;
 		public TextView endTimeTextView;
 		public ViewCompletionBar completionBar;
+		public ViewEventCircle iconImageView;
 		//public AgendaEvent event;
 		
 		public AESViewHolder (ConstraintLayout view)
@@ -31,6 +29,7 @@ public class AESAdapter extends RecyclerView.Adapter<AESAdapter.AESViewHolder>
 			startTimeTextView = view.findViewById (R.id.agenda_event_summary_startTime);
 			endTimeTextView = view.findViewById (R.id.agenda_event_summary_endTime);
 			completionBar = view.findViewById (R.id.agenda_event_summary_completion);
+			iconImageView = view.findViewById (R.id.agenda_event_summary_icon);
 			
 			//Calendar tmp0 = Calendar.getInstance ();
 			//Calendar tmp1 = Calendar.getInstance ();
@@ -64,6 +63,8 @@ public class AESAdapter extends RecyclerView.Adapter<AESAdapter.AESViewHolder>
 		//holder.event = event;
 		holder.startTimeTextView.setText (event.startTimeString);
 		holder.endTimeTextView.setText (event.endTimeString);
+		holder.iconImageView.setHue (event.hue);
+		holder.completionBar.setProgress (0.0f);
 	}
 	
 	@Override

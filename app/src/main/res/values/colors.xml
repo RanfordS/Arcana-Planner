@@ -5,4 +5,6 @@
 	<color name="colorAccent">#D81B60</color>
 	<color name="colorNearWhite">#EEEEEE</color>
 	<color name="colorNearBlack">#222222</color>
+	<color name="colorAgendaEventCircleBaseMajor">#FFFFFF</color>
+	<color name="colorAgendaEventCircleBaseMinor">#E1E1E1</color>
 </resources>

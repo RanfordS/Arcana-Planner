@@ -3,4 +3,7 @@
 	<declare-styleable name="ViewCompletionBar">
 		<attr name="progress" format="float"/>
 	</declare-styleable>
+	<declare-styleable name="ViewEventCircle">
+		<attr name="hue" format="float"/>
+	</declare-styleable>
 </resources>

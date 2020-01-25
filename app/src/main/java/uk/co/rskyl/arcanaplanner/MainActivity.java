@@ -1,8 +1,6 @@
 package uk.co.rskyl.arcanaplanner;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import java.util.Calendar;
@@ -10,7 +8,6 @@ import java.util.Calendar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -50,7 +47,7 @@ class MainActivity extends AppCompatActivity
 		RecyclerView.Adapter adapter = new AESAdapter (data);
 		recyclerView.setAdapter (adapter);
 		
-		recyclerView.addItemDecoration (new DividerItemDecoration (this, DividerItemDecoration.VERTICAL));
+		//recyclerView.addItemDecoration (new DividerItemDecoration (this, DividerItemDecoration.VERTICAL));
 		
 		final ViewCompletionBar viewCompletionBar = findViewById (R.id.ViewCompletionBar);
 		

@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.os.Parcelable;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -77,13 +75,34 @@ public class ViewCompletionBar extends View
 	@Override
 	protected void onDraw (Canvas canvas)
 	{
+		/*/
+		 b               w-b
+		0| h/2      w-h/2 |w
+		|| |            | ||
+		 ################## -- h
+		##::::::::::::::::##-- h-b
+		#::::::::::::::::::#
+		##::::::::::::::::##-- b
+		 ################## -- 0
+		     |            |
+		   h-b ---------> w-b
+		 */
 		super.onDraw (canvas);
 		float w = getWidth ();
 		float h = getHeight ();
 		float b = 1*dp;
 		float z = 0;
-		float p = b + (w - 2*b)*progress;
-		canvas.drawRoundRect (z, z, w, h, h/2, h/2, backgroundPaint);
-		canvas.drawRoundRect (b, b, p, h - b, h/2 - b, h/2 - b, foregroundPaint);
+		float p = h + (w - h)*progress - b;
+		canvas.drawRoundRect (z, z,
+							  w, h,
+							  h/2, h/2,
+							  backgroundPaint);
+		if (h > 1.0f)
+		{
+			canvas.drawRoundRect (b, b,
+								  p, h - b,
+								  h/2 - b, h/2 - b,
+								  foregroundPaint);
+		}
 	}
 }

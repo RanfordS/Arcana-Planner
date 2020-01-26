@@ -25,13 +25,13 @@ class MainActivity extends AppCompatActivity
 		setContentView (R.layout.activity_main);
 		
 		Calendar c0 = Calendar.getInstance ();
-		c0.set (2020, Calendar.JANUARY, 21, 16, 0);
+		c0.set (2020, Calendar.JANUARY, 26, 12, 0);
 		Calendar c1 = Calendar.getInstance ();
-		c1.set (2020, Calendar.JANUARY, 21, 17, 30);
+		c1.set (2020, Calendar.JANUARY, 26, 13, 30);
 		Calendar c2 = Calendar.getInstance ();
-		c2.set (2020, Calendar.JANUARY, 21, 17, 30);
+		c2.set (2020, Calendar.JANUARY, 26, 17, 30);
 		Calendar c3 = Calendar.getInstance ();
-		c3.set (2020, Calendar.JANUARY, 21, 18, 30);
+		c3.set (2020, Calendar.JANUARY, 26, 18, 30);
 		
 		AgendaEvent[] data =
 			{

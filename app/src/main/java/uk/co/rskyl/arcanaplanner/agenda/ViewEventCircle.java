@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Outline;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewOutlineProvider;
 
 import uk.co.rskyl.arcanaplanner.R;
 
@@ -18,6 +20,20 @@ public class ViewEventCircle extends View
 	private int foregroundColor;
 	private Float dp;
 	
+	private class OutlineProviderEventCircle extends ViewOutlineProvider
+	{
+		@Override
+		public void getOutline (View view, Outline outline)
+		{
+			int cx = getWidth ()/2;
+			int cy = getHeight ()/2;
+			int r = Math.min (cx, cy);
+			
+			outline.setOval (cx - r, cy - r,
+							 cx + r, cy + r);
+		}
+	}
+	
 	public ViewEventCircle (Context context, AttributeSet attributes)
 	{
 		super (context, attributes);
@@ -27,10 +43,13 @@ public class ViewEventCircle extends View
 																	0);
 		dp = context.getResources ()
 					.getDisplayMetrics ()
-					.density;
+			.density;
 		
 		setHue (attributeArray.getFloat (R.styleable.ViewEventCircle_hue, 0f));
 		attributeArray.recycle ();
+		
+		OutlineProviderEventCircle outline = new OutlineProviderEventCircle ();
+		setOutlineProvider (outline);
 	}
 	
 	public void setHue (float hue)

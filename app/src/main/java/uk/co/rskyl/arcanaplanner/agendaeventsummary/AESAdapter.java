@@ -1,7 +1,6 @@
 package uk.co.rskyl.arcanaplanner.agendaeventsummary;
 
 import android.animation.TimeInterpolator;
-import android.annotation.SuppressLint;
 import android.transition.ChangeBounds;
 import android.transition.Transition;
 import android.transition.TransitionManager;
@@ -11,14 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.Calendar;
-
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.ConstraintSet;
 import androidx.recyclerview.widget.RecyclerView;
 import uk.co.rskyl.arcanaplanner.R;
-import uk.co.rskyl.arcanaplanner.agenda.AgendaEvent;
+import uk.co.rskyl.arcanaplanner.agenda.TmpAgendaEvent;
 import uk.co.rskyl.arcanaplanner.agenda.ViewEventCircle;
 import uk.co.rskyl.arcanaplanner.completionbar.ViewCompletionBar;
 
@@ -34,7 +31,7 @@ public class AESAdapter extends RecyclerView.Adapter<AESAdapter.AESViewHolder>
 		public ViewCompletionBar completionBar;
 		public ViewEventCircle iconImageView;
 		//
-		public AgendaEvent event;
+		public TmpAgendaEvent event;
 		private ConstraintSet activeConstraintSet;
 		private ConstraintSet inactiveConstraintSet;
 		private Boolean eventActive;
@@ -56,12 +53,13 @@ public class AESAdapter extends RecyclerView.Adapter<AESAdapter.AESViewHolder>
 			inactiveConstraintSet.clone (view);
 			inactiveConstraintSet.setHorizontalBias (R.id.agenda_event_summary_endTime, 0.0f);
 			inactiveConstraintSet.constrainHeight (R.id.agenda_event_summary_completion, 1);
+			inactiveConstraintSet.setTranslationZ (R.id.agenda_event_summary_completion, 0.0f);
 			//  set parameters
 			eventActive = true;
 			
 			//Calendar tmp0 = Calendar.getInstance ();
 			//Calendar tmp1 = Calendar.getInstance ();
-			//event = new AgendaEvent (tmp0, tmp1);
+			//event = new TmpAgendaEvent (tmp0, tmp1);
 		}
 		
 		public void setEventActive (Boolean active)
@@ -70,7 +68,19 @@ public class AESAdapter extends RecyclerView.Adapter<AESAdapter.AESViewHolder>
 			{
 				return;
 			}
-			TransitionManager.beginDelayedTransition (layout);
+			
+			Transition transition = new ChangeBounds ();
+			transition.setInterpolator (new TimeInterpolator ()
+			{
+				@Override public float getInterpolation (float v)
+				{
+					v = 1.0f - (float) Math.sqrt (v);
+					v *= v;
+					return 1.0f - v;
+				}
+			});
+			
+			TransitionManager.beginDelayedTransition (layout, transition);
 			ConstraintSet constraintSet = active ? activeConstraintSet : inactiveConstraintSet;
 			constraintSet.applyTo (layout);
 			eventActive = active;
@@ -82,9 +92,9 @@ public class AESAdapter extends RecyclerView.Adapter<AESAdapter.AESViewHolder>
 		}
 	}
 	
-	private AgendaEvent[] agendaEvents;
+	private TmpAgendaEvent[] agendaEvents;
 	
-	public AESAdapter (AgendaEvent[] events)
+	public AESAdapter (TmpAgendaEvent[] events)
 	{
 		agendaEvents = events;
 	}
@@ -106,7 +116,7 @@ public class AESAdapter extends RecyclerView.Adapter<AESAdapter.AESViewHolder>
 	public void onBindViewHolder (@NonNull final AESViewHolder holder,
 								  int position)
 	{
-		AgendaEvent event = agendaEvents[position];
+		TmpAgendaEvent event = agendaEvents[position];
 		holder.event = event;
 		holder.startTimeTextView.setText (event.startTimeString);
 		holder.endTimeTextView.setText (event.endTimeString);

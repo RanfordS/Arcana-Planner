@@ -8,10 +8,9 @@ import java.util.Calendar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import uk.co.rskyl.arcanaplanner.agenda.AgendaEvent;
+import uk.co.rskyl.arcanaplanner.agenda.TmpAgendaEvent;
 import uk.co.rskyl.arcanaplanner.agendaeventsummary.AESAdapter;
 import uk.co.rskyl.arcanaplanner.completionbar.ViewCompletionBar;
 
@@ -33,10 +32,10 @@ class MainActivity extends AppCompatActivity
 		Calendar c3 = Calendar.getInstance ();
 		c3.set (2020, Calendar.JANUARY, 26, 18, 30);
 		
-		AgendaEvent[] data =
+		TmpAgendaEvent[] data =
 			{
-				new AgendaEvent (c0, c1),
-				new AgendaEvent (c2, c3)
+				new TmpAgendaEvent (c0, c1),
+				new TmpAgendaEvent (c2, c3)
 			};
 		
 		RecyclerView recyclerView = findViewById (R.id.recyclerview);
@@ -49,26 +48,15 @@ class MainActivity extends AppCompatActivity
 		
 		//recyclerView.addItemDecoration (new DividerItemDecoration (this, DividerItemDecoration.VERTICAL));
 		
-		final ViewCompletionBar viewCompletionBar = findViewById (R.id.ViewCompletionBar);
-		
-		findViewById (R.id.button).setOnClickListener (new View.OnClickListener ()
-		{
-			@Override public void onClick (View view)
-			{
-				viewCompletionBar.setProgress ((float) Math.random ());
-			}
-		});
 		
 		if (savedInstanceState != null)
 		{
-			viewCompletionBar.setProgress (savedInstanceState.getFloat ("progress"));
+			//
 		}
 	}
 	
 	@Override protected void onSaveInstanceState (@NonNull Bundle outState)
 	{
 		super.onSaveInstanceState (outState);
-		ViewCompletionBar viewCompletionBar = findViewById (R.id.ViewCompletionBar);
-		outState.putFloat ("progress", viewCompletionBar.getProgress ());
 	}
 }

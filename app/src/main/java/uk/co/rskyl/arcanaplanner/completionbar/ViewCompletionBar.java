@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
+import android.graphics.Outline;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewOutlineProvider;
 
 import uk.co.rskyl.arcanaplanner.R;
 
@@ -19,6 +21,20 @@ public class ViewCompletionBar extends View
 	private Paint foregroundPaint;
 	private int foregroundColor;
 	private Float dp;
+	
+	private class OutlineProviderCompletionBar extends ViewOutlineProvider
+	{
+		@Override
+		public void getOutline (View view, Outline outline)
+		{
+			int w = getWidth ();
+			int h = getHeight ();
+			int z = 0;
+			outline.setRoundRect (z, z,
+								  w, h,
+								  h/2);
+		}
+	}
 	
 	public ViewCompletionBar (Context context, AttributeSet attributes)
 	{
@@ -38,6 +54,7 @@ public class ViewCompletionBar extends View
 		
 		attributeArray.recycle ();
 		
+		setOutlineProvider (new OutlineProviderCompletionBar ());
 		init ();
 	}
 	

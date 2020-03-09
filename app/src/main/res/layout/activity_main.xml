@@ -21,21 +21,12 @@
 		layout="@layout/agenda_event_summary"
 		android:layout_width="0dp"
 		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
 		android:layout_marginTop="16dp"
+		android:layout_marginEnd="16dp"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/activity_main_datebar"/>
-	
-	<uk.co.rskyl.arcanaplanner.completionbar.ViewCompletionBar
-		android:id="@+id/ViewCompletionBar"
-		android:layout_width="0dp"
-		android:layout_height="3dp"
-		android:layout_marginStart="16dp"
-		android:layout_marginEnd="16dp"
-		android:layout_marginBottom="16dp"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"/>
 	
 	<androidx.recyclerview.widget.RecyclerView
 		android:id="@+id/recyclerview"
@@ -45,20 +36,25 @@
 		android:layout_marginTop="16dp"
 		android:layout_marginEnd="16dp"
 		android:layout_marginBottom="16dp"
-		tools:listitem="@layout/agenda_event_summary"
-		app:layout_constraintBottom_toTopOf="@+id/button"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/Agenda"
+		tools:listitem="@layout/agenda_event_summary"/>
+	
+	<TextView
+		android:id="@+id/Agenda"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="16dp"
+		android:background="@color/colorPrimaryDark"
+		android:elevation="4dp"
+		android:padding="4dp"
+		android:text="TextView"
+		android:textAlignment="center"
+		android:textColor="@color/colorNearWhite"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/include2"/>
-	
-	<Button
-		android:id="@+id/button"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginBottom="16dp"
-		android:text="@string/hello_world"
-		android:textAllCaps="false"
-		app:layout_constraintBottom_toTopOf="@+id/ViewCompletionBar"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

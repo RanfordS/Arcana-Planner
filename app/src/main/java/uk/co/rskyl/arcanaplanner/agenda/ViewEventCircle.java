@@ -18,7 +18,8 @@ public class ViewEventCircle extends View
 	private Paint foregroundPaint;
 	private int backgroundColor;
 	private int foregroundColor;
-	private Float dp;
+	private float dp;
+	private boolean routine;
 	
 	private class OutlineProviderEventCircle extends ViewOutlineProvider
 	{
@@ -67,6 +68,14 @@ public class ViewEventCircle extends View
 		requestLayout ();
 	}
 	
+	public void setRoutine (boolean isRoutine)
+	{
+		routine = isRoutine;
+		
+		invalidate ();
+		requestLayout ();
+	}
+	
 	@Override
 	protected void onDraw (Canvas canvas)
 	{
@@ -74,8 +83,17 @@ public class ViewEventCircle extends View
 		float cx = getWidth ()/2;
 		float cy = getHeight ()/2;
 		float rM = Math.min (cx, cy);
-		float rm = rM - 4*dp;
-		canvas.drawCircle (cx, cy, rM, backgroundPaint);
-		canvas.drawCircle (cx, cy, rm, foregroundPaint);
+		if (routine)
+		{
+			float rm = 4*dp;
+			canvas.drawCircle (cx, cy, rM, foregroundPaint);
+			canvas.drawCircle (cx, cy, rm, backgroundPaint);
+		}
+		else
+		{
+			float rm = rM - 4*dp;
+			canvas.drawCircle (cx, cy, rM, backgroundPaint);
+			canvas.drawCircle (cx, cy, rm, foregroundPaint);
+		}
 	}
 }
